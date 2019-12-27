@@ -46,20 +46,13 @@ namespace cmd_calc {
         inline bool is_valid_lb();
         inline bool is_valid_rb();
 
+        void flush();
+
         void switch_char(const std::string::iterator chit);
 
-        void flush() {
-            m_value.clear();
-            m_oper = 0;
-            m_prior = -1;
-        }
-            
     public:
-        explicit Processor(const std::string& line) : m_line(line) {
-            flush();
-            m_bprior = 0;
-            m_last = eUNDEF;
-        }
+        explicit Processor(const std::string& line)
+            : m_line(line), m_value(""), m_oper(0), m_prior(-1), m_bprior(0), m_last(eUNDEF) {}
         ~Processor() = default;
         const double run();
     };

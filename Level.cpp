@@ -6,14 +6,9 @@ namespace cmd_calc {
 
     static uint64_t gs_levels = 0;
 
-    Level::Level(const double in_val, const char in_op, const int in_prior, Level* in_prev) {
-        m_val = in_val;
-        m_op = in_op;
-        m_prior = in_prior;
-        prev = in_prev;
-        next = nullptr;
-        m_level_id = ++gs_levels;
-        std::cout << "  Create level #:" << m_level_id << ": " << m_val << " " << m_op << " : " << m_prior << std::endl;
+    Level::Level(const double in_val, const char in_op, const int in_prior, Level* in_prev)
+        : m_val(in_val), m_op(in_op), m_prior(in_prior), m_level_id(++gs_levels), prev(in_prev), next(nullptr) {
+        std::cout << " Created level #:" << m_level_id << ": " << m_val << " " << m_op << " : " << m_prior << std::endl;
     }
 
     void Level::exec() {

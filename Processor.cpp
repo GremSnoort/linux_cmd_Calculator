@@ -81,6 +81,12 @@ namespace cmd_calc {
         }
     }
 
+    void Processor::flush() {
+        m_value.clear();
+        m_oper = 0;
+        m_prior = -1;
+    }
+
     inline bool Processor::is_point(const char ch) {
         return ch == '.';
     }
